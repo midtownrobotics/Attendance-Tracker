@@ -1,0 +1,30 @@
+{
+  "name": "push-your-luck-multiplayer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "compileClient": "tsc --project ./client/ts/",
+    "watchClient": "tsc --project ./client/ts/ --watch",
+    "dev": "npm run compileClient && ts-node index.ts port 8004",
+    "pm2": "NODE_ENV=production pm2 start index.ts --watch -- port 8000"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "better-sqlite3": "^11.8.1",
+    "body-parser": "^1.20.3",
+    "ejs": "^3.1.10",
+    "express": "^4.21.1",
+    "sequelize": "^6.37.5",
+    "sequelize-typescript": "^2.1.6",
+    "sqlite3": "^5.1.7",
+    "ts-node": "^10.9.2"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.12",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.1",
+    "@types/sequelize": "^4.28.20"
+  }
+}

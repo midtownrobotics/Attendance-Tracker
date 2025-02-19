@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>G3 - Attendance Tracker</title>
+        <link rel="icon" type="image/png" href="/g3.png">
+        <link rel="stylesheet" href="/libs/bootstrap.min.css">
+        <link rel="stylesheet" href="/admin.css">
+    </head>
+    <body>
+        <h1 id="heading">Admin Page</h1>
+        <br>
+        <div id="add-box">
+            <input type="text" placeholder="Name" id="name-input" autocomplete="off">
+        </div>
+        <button id="add-button">Add</button>
+        <button id="rookie-button">Rookie?</button>
+        <br><br>
+        <div id="remove-box">
+            <input type="text" placeholder="Name" id="name-input" autocomplete="off">
+        </div>
+        <button id="remove-button">Remove</button>
+        <table class="table  table-dark" id="people">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Rookie?</th>
+                    <th scope="col">Meetings</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for (let i = 0; i < members.length; i++) { %>
+                <tr>
+                    <th><%- members[i].id %></th>
+                    <th><%- members[i].name %></th>
+                    <th><%- members[i].isRookie %></th>
+                    <th><%- members[i].attendanceRecord.length %></th>
+                </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </body>
+</html>
+
+<script src="/libs/jquery.min.js"></script>
+<script src="/libs/utils.js"></script>
+
+<script>
+    let rookieButtonStatus = false;
+
+    $("#rookie-button").on('click', function () {
+        rookieButtonStatus = !rookieButtonStatus;
+
+        if (rookieButtonStatus) {
+            $(this).css("backgroundColor", "green")
+        } else {
+            $(this).css("backgroundColor", "red")
+        }
+    })
+
+    $('#add-button').on('click', async function () {
+        post({
+            action: "add",
+            name: $("#add-box input").val().trim(),
+            isRookie: rookieButtonStatus
+        })
+
+        setTimeout(() => window.location.reload(), 100)
+    })
+
+    $('#remove-button').on('click', async function () {
+        post({
+            action: "remove",
+            name: $("#remove-box input").val().trim(),
+            isRookie: rookieButtonStatus
+        })
+
+        setTimeout(() => window.location.reload(), 100)
+    })
+</script>

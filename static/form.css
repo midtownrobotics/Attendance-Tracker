@@ -1,0 +1,99 @@
+body {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background-color: rgb(204, 204, 204);
+    user-select: none;
+}
+
+#heading {
+    font-size: 80px;
+}
+
+#name-box {
+    left: calc(50% - 55px);
+    transform: translate(-50%);
+    position: absolute;
+}
+
+#submit-button {
+    left: calc(50% + 77px);
+    transform: translate(-50%);
+    position: absolute;
+}
+
+#clear-button {
+    left: calc(50% + 140px);
+    transform: translate(-50%);
+    position: absolute;
+}
+
+#leaderboards {
+    width: 25%;
+    height: 75%;
+}
+
+#leaderboards .leaderboard {
+    width: 25%;
+    position: absolute;
+    height: calc(70% - 30px);
+    font-size: 30px;
+    margin: 10px;
+}
+
+#leaderboards .leaderboard .board {
+    background-color: rgb(185, 104, 104);
+    color: black;
+    border-radius: 10px;
+    padding: 10px;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+#leaderboards .member .name {
+    float: left;
+}
+
+#leaderboards .member .value {
+    float: right;
+}
+
+#leaderboards .member {
+    width: 100%;
+}
+
+#leaderboards .title {
+    font-weight: bold;
+}
+
+#leaderboard {
+    left: calc(20%);
+    transform: translate(-50%);
+}
+
+#rookie-leaderboard {
+    left: calc(50%);
+    transform: translate(-50%);
+}
+
+#here-today {
+    left: calc(80%);
+    transform: translate(-50%);
+}
+
+#people {
+    position: relative;
+    top: 50px;
+    left: 50%;
+    transform: translate(-50%);
+    width: max-content;
+    max-width: 50%;
+}
+
+#rookie-button {
+    left: calc(50% + 150px);
+    transform: translate(-50%);
+    position: absolute;
+    background-color: red;
+}

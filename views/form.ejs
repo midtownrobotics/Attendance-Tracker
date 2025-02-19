@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>G3 - Attendance Tracker</title>
+        <link rel="icon" type="image/png" href="/g3.png">
+        <link rel="stylesheet" href="/libs/bootstrap.min.css">
+        <link rel="stylesheet" href="/form.css">
+    </head>
+    <body>
+        <h1 id="heading"><span style="color: red;">G3</span> Attendance Tracker</h1>
+        <div id="name-box">
+            <input type="text" placeholder="Name" id="name-input" autocomplete="off">
+        </div>
+        <button id="submit-button">Submit</button>
+        <button id="clear-button">Clear</button>
+        <br><br><br>
+        <div id="leaderboards">
+            <div id="leaderboard" class="leaderboard">
+                <div class="title">
+                    Leaderboard
+                </div>
+                <div class="board">
+                    <% for (let i = 0; i < leaderboard.length; i++) { %>
+                        <% if (leaderboard[i].attendanceRecord.length != 0) { %>
+                        <div class="member">
+                            <div class="name">
+                                <%- leaderboard[i].name %>
+                            </div>
+                            <div class="value">
+                                <%- leaderboard[i].attendanceRecord.length %>
+                            </div>
+                        </div><br>
+                        <% } %>
+                    <% } %>
+                </div>
+            </div>
+            <div id="rookie-leaderboard" class="leaderboard">
+                <div class="title">
+                    Rookie Leaderboard
+                </div>
+                <div class="board">
+                    <% for (let i = 0; i < rookieLeaderboard.length; i++) { %>
+                        <% if (rookieLeaderboard[i].attendanceRecord.length != 0) { %>
+                        <div class="member">
+                            <div class="name">
+                                <%- rookieLeaderboard[i].name %>
+                            </div>
+                            <div class="value">
+                                <%- rookieLeaderboard[i].attendanceRecord.length %>
+                            </div>
+                        </div><br>
+                        <% } %>
+                    <% } %>
+                </div>
+            </div>
+            <div id="here-today" class="leaderboard">
+                <div class="title">
+                    People Signed In
+                </div>
+                <div class="board">
+                    <% for (let i = 0; i < checkedIn.length; i++) { %>
+                    <div class="name">
+                        <%- checkedIn[i].name %>
+                    </div>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
+<script src="/libs/jquery.min.js"></script>
+<script src="/libs/utils.js"></script>
+
+<script>
+    const memberNames = <%- JSON.stringify(memberNames) %>;
+    let foundUser = false;
+
+    $('#name-input').on('input', function () {
+        const remainingMembers = memberNames.filter((m) => m.toLowerCase().includes($(this).val().toLowerCase()))
+
+        foundUser = false;
+
+        if (remainingMembers.length == 1) {
+            $(this).val(remainingMembers[0])
+            $("body").blur()
+            $(this).prop("disabled", true);
+            foundUser = true;
+            setTimeout(() => {
+                $(this).prop("disabled", false);
+            }, 100)
+        }
+
+        if (foundUser) {
+            $('#submit-button').prop("disabled", false)
+        } else {
+            $('#submit-button').prop("disabled", true)
+        }
+    })
+
+    $('body').on('keyup', function (e) {
+        if (e.keyCode == 13) {
+            $("#submit-button").click()
+        }
+    })
+
+    $('#submit-button').on('click', function () {
+        if (foundUser) {
+            post({
+                action: "checkIn",
+                name: $('#name-input').val()
+            })
+            setTimeout(() => window.location.reload(), 100)
+        }
+    })
+
+    $("#clear-button").on('click', function () {
+        $('#name-input').val("")
+        $('#name-input').trigger("input")
+    })  
+
+    $('#name-input').trigger("input")
+
+</script>

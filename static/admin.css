@@ -1,0 +1,50 @@
+body {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background-color: rgb(204, 204, 204);
+}
+
+#heading {
+    font-size: 80px;
+}
+
+#add-box {
+    left: calc(50% - 65px);
+    transform: translate(-50%);
+    position: absolute;
+}
+
+#add-button {
+    left: calc(50% + 60px);
+    transform: translate(-50%);
+    position: absolute;
+}
+
+#people {
+    position: relative;
+    top: 50px;
+    left: 50%;
+    transform: translate(-50%);
+    width: max-content;
+    max-width: 50%;
+}
+
+#rookie-button {
+    left: calc(50% + 125px);
+    transform: translate(-50%);
+    position: absolute;
+    background-color: red;
+}
+
+#remove-box {
+    left: calc(50% - 40px);
+    transform: translate(-50%);
+    position: absolute;
+}
+
+#remove-button {
+    left: calc(50% + 95px);
+    transform: translate(-50%);
+    position: absolute;
+}
