@@ -109,7 +109,7 @@ app.post('/admin', adminAuthenticate, async (req: Request, res: Response) => {
     }
 
     if (action == "clearAllMeetings") {
-        MemberModel.truncate()
+        MeetingModel.truncate()
     }
 })
 
