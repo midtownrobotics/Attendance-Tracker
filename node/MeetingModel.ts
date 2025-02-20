@@ -14,6 +14,10 @@ class MeetingModel extends Model<Meeting> {
             MeetingModel.create({ date })
         }
     }
+
+    public static async removeMeeting(date: string) {
+        (await MeetingModel.findOne({where: {date}}))?.destroy()
+    }
 }
 
 export default MeetingModel;

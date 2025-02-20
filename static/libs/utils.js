@@ -1,7 +1,8 @@
-async function post(body) {
+async function post(body, admin = false) {
         console.log(body)
 
-        const url = "/"
+        const url = admin ? "/admin" : "/"
+
         return fetch(url, {
                 method: "POST",
                 credentials: 'same-origin',

@@ -22,9 +22,16 @@ body {
 }
 
 #people {
-    position: relative;
-    top: 50px;
-    left: 50%;
+    position: absolute;
+    left: 45%;
+    transform: translate(-50%);
+    width: max-content;
+    max-width: 50%;
+}
+
+#meetings {
+    position: absolute;
+    left: calc(45% + 300px);
     transform: translate(-50%);
     width: max-content;
     max-width: 50%;
@@ -45,6 +52,25 @@ body {
 
 #remove-button {
     left: calc(50% + 95px);
+    transform: translate(-50%);
+    position: absolute;
+}
+
+#clear-all-meeting {
+    left: calc(50% + 140px);
+    transform: translate(-50%);
+    position: absolute;
+    background-color: red;
+}
+
+#remove-date {
+    left: calc(50% + 26px);
+    transform: translate(-50%);
+    position: absolute;
+}
+
+#meeting-date {
+    left: calc(50% - 110px);
     transform: translate(-50%);
     position: absolute;
 }
