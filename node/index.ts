@@ -5,6 +5,7 @@ import { ANSIColorCodes, colorLog, getFormattedDate } from './utils';
 import MemberModel from './MemberModel';
 import MeetingModel from './MeetingModel';
 import fs from 'fs';
+import AttendanceModel from './AttendanceModel';
 
 const port: number = 8080;
 
@@ -106,10 +107,12 @@ app.post('/admin', adminAuthenticate, async (req: Request, res: Response) => {
 
     if (action == "removeMeeting" && req.body.date) {
         MeetingModel.removeMeeting(req.body.date)
+        AttendanceModel.removeAllByDate(req.body.date)
     }
 
     if (action == "clearAllMeetings") {
         MeetingModel.truncate()
+        AttendanceModel.truncate()
     }
 })
 

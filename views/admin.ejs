@@ -43,7 +43,7 @@
                     <th><%- members[i].name %></th>
                     <th><%- members[i].isRookie %></th>
                     <th><%- members[i].attendanceRecord.length %></th>
-                    <th><%- (members[i].attendanceRecord.length / totalMeetings * 100) + "%" %></th>
+                    <th><%- ((members[i].attendanceRecord.length / totalMeetings * 100) | 0) + "%" %></th>
                 </tr>
                 <% } %>
             </tbody>
@@ -122,4 +122,11 @@
 
         setTimeout(() => window.location.reload(), 100)
     })
+
+    $("#name-input").on('keyup', function (e) {
+        if (e.keyCode == 13) $("#add-button").trigger('click')
+    })
+
+    $('#name-input').select()
+
 </script>

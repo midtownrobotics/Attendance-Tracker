@@ -11,7 +11,7 @@ interface Attendance {
 }
 
 // Make 'id' optional when creating a member
-interface AttendanceCreationAttributes extends Optional<Attendance, 'id'> {}
+interface AttendanceCreationAttributes extends Optional<Attendance, 'id'> { }
 
 @Table({ tableName: "attendance_records" })
 class AttendanceModel extends Model<Attendance, AttendanceCreationAttributes> {
@@ -30,6 +30,14 @@ class AttendanceModel extends Model<Attendance, AttendanceCreationAttributes> {
 
     @Column({ type: DataType.BIGINT, allowNull: false })
     public checkIn!: number;
+
+    public static async removeAllByDate(date: string) {
+        (await AttendanceModel.findAll()).forEach((m) => {
+            if (m.date == date) {
+                m.destroy()
+            }
+        })
+    }
 }
 
 export default AttendanceModel;
