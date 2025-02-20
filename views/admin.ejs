@@ -24,8 +24,9 @@
                 <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Name</th>
-                    <th scope="col">Rookie?</th>
+                    <th scope="col">Rookie</th>
                     <th scope="col">Meetings</th>
+                    <th scope="col">Percent</th>
                 </tr>
             </thead>
             <tbody>
@@ -35,6 +36,7 @@
                     <th><%- members[i].name %></th>
                     <th><%- members[i].isRookie %></th>
                     <th><%- members[i].attendanceRecord.length %></th>
+                    <th><%- (members[i].attendanceRecord.length / totalMeetings * 100) + "%" %></th>
                 </tr>
                 <% } %>
             </tbody>

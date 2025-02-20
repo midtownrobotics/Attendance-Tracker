@@ -2,6 +2,7 @@ import { Column, DataType, HasMany, Model, Table } from "sequelize-typescript";
 import AttendanceModel from "./AttendanceModel";
 import { getFormattedDate } from "./utils";
 import { Optional } from "sequelize";
+import MeetingModel from "./MeetingModel";
 
 interface Member {
     id: number;
@@ -33,6 +34,8 @@ class MemberModel extends Model<Member, MemberCreationAttributes> {
             date: getFormattedDate(),
             checkIn: Date.now()
         })
+
+        MeetingModel.tryAddMeeting(getFormattedDate())
     }
 
     public static async getMember(name: string): Promise<MemberModel | null>;

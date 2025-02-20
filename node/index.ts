@@ -3,6 +3,7 @@ import path from 'path';
 import syncDatabase from './syncDatabase';
 import { ANSIColorCodes, colorLog, getFormattedDate } from './utils';
 import MemberModel from './MemberModel';
+import MeetingModel from './MeetingModel';
 
 const port: number = 8080;
 
@@ -42,7 +43,8 @@ app.get('/admin', async (req: Request, res: Response) => {
 
     res.render('admin', 
         {
-            members: members
+            members: members,
+            totalMeetings: (await MeetingModel.findAll())?.length
         }
     )
 });
