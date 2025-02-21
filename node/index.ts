@@ -7,7 +7,7 @@ import MeetingModel from './MeetingModel';
 import fs from 'fs';
 import AttendanceModel from './AttendanceModel';
 
-const port: number = 8080;
+const port: number = 8001;
 
 const app = express();
 
