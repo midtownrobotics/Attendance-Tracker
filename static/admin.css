@@ -31,7 +31,7 @@ body {
 
 #meetings {
     position: absolute;
-    left: calc(45% + 300px);
+    left: calc(45% + 350px);
     transform: translate(-50%);
     width: max-content;
     max-width: 50%;

@@ -32,11 +32,13 @@ class AttendanceModel extends Model<Attendance, AttendanceCreationAttributes> {
     public checkIn!: number;
 
     public static async removeAllByDate(date: string) {
-        (await AttendanceModel.findAll()).forEach((m) => {
-            if (m.date == date) {
-                m.destroy()
-            }
+        (await AttendanceModel.findAll({where: {date}})).forEach((m) => {
+            m.destroy()
         })
+    }
+
+    public static async getAllByDate(date: string): Promise<AttendanceModel[]> {
+        return (await AttendanceModel.findAll({where: {date}}))
     }
 }
 

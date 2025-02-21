@@ -51,13 +51,15 @@
         <table class="table table-dark" id="meetings">
             <thead>
                 <tr>
-                    <th scope="col">Meetings</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Attendance</th>
                 </tr>
             </thead>
             <tbody>
                 <% for (let i = 0; i < meetings.length; i++) { %>
                 <tr>
-                    <th><%- meetings[i].date %></th>
+                    <th><%- meetings[i].meeting.date %></th>
+                    <th><%- meetings[i].count %></th>
                 </tr>
                 <% } %>
             </tbody>

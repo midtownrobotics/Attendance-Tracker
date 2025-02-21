@@ -3,7 +3,7 @@ import path from 'path';
 import syncDatabase from './syncDatabase';
 import { ANSIColorCodes, colorLog, getFormattedDate } from './utils';
 import MemberModel from './MemberModel';
-import MeetingModel from './MeetingModel';
+import MeetingModel, { MeetingInformation } from './MeetingModel';
 import fs from 'fs';
 import AttendanceModel from './AttendanceModel';
 
@@ -75,10 +75,19 @@ app.get('/admin', adminAuthenticate, async (req: Request, res: Response) => {
         return;
     }
 
+    let meetingInfo: MeetingInformation[] = [];
+
+    for (let i = 0; i < meetings.length; i++) {
+        meetingInfo.push({
+            meeting: meetings[i],
+            count: (await AttendanceModel.getAllByDate(meetings[i].date)).length
+        })
+    }
+
     res.render('admin',
         {
             members: members,
-            meetings: meetings,
+            meetings: meetingInfo,
             totalMeetings: (await MeetingModel.findAll())?.length
         }
     )

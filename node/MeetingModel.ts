@@ -4,6 +4,11 @@ interface Meeting {
     date: string;
 }
 
+export interface MeetingInformation {
+    meeting: MeetingModel;
+    count: number;
+}
+
 @Table({ tableName: "meetings" })
 class MeetingModel extends Model<Meeting> {
     @Column({ type: DataType.STRING, allowNull: false, primaryKey: true })
