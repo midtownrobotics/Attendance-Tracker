@@ -2,7 +2,7 @@
   "name": "push-your-luck-multiplayer",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./node/index.js",
   "scripts": {
     "compileClient": "tsc --project ./client/ts/",
     "watchClient": "tsc --project ./client/ts/ --watch",
