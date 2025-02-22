@@ -16,16 +16,34 @@ body {
     position: absolute;
 }
 
-#submit-button {
-    left: calc(50% + 77px);
-    transform: translate(-50%);
-    position: absolute;
+/* Mobile */
+@media (max-width: 1025px) {
+    #submit-button {
+        left: calc(50% + 85px);
+        transform: translate(-50%);
+        position: absolute;
+    }
+    
+    #clear-button {
+        left: calc(50% + 160px);
+        transform: translate(-50%);
+        position: absolute;
+    }
 }
 
-#clear-button {
-    left: calc(50% + 140px);
-    transform: translate(-50%);
-    position: absolute;
+/* Desktop */
+@media (min-width: 1025px) {
+    #submit-button {
+        left: calc(50% + 77px);
+        transform: translate(-50%);
+        position: absolute;
+    }
+    
+    #clear-button {
+        left: calc(50% + 140px);
+        transform: translate(-50%);
+        position: absolute;
+    }
 }
 
 #leaderboards {
